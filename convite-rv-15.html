@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphael e Victor</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Georgia, serif; background: #fff; overflow: hidden; height: 100vh; width: 100vw; }
+#audio { display: none; }
+
+#env {
+  position: fixed; inset: 0; background: #f5f0e8;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; transition: opacity 0.8s ease, transform 0.8s ease;
+}
+#env.hide { opacity: 0; transform: scale(1.05); pointer-events: none; }
+#env img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; display: block; }
+.hint {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  color: #7a8a5a; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  animation: pulse 2s infinite; pointer-events: none;
+}
+@keyframes pulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+#main { display: none; height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+#main.show { display: block; }
+
+.pg {
+  scroll-snap-align: start; height: 100vh; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; background: #fff;
+}
+.pg img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.vp { background: #000 !important; }
+.vp video { width: 100%; height: 100%; object-fit: cover; }
+
+#sh {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  color: #7a8a5a; display: none; flex-direction: column; align-items: center;
+  gap: 4px; opacity: 0.7; animation: bounce 2s infinite; pointer-events: none; z-index: 50;
+}
+#sh svg { width: 18px; height: 18px; fill: #7a8a5a; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+#mb {
+  position: fixed; top: 16px; right: 16px; z-index: 200;
+  background: rgba(255,255,255,0.85); border: 1.5px solid #7a8a5a;
+  border-radius: 50%; width: 40px; height: 40px; display: none;
+  align-items: center; justify-content: center; cursor: pointer; font-size: 18px;
+}
+#mb.show { display: flex; }
+</style>
+</head>
+<body>
+
+<audio id="audio" loop>
+  <source src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/By%20the%20Coast%20Part%20of%20Me.mp3" type="audio/mpeg">
+</audio>
+
+<button id="mb">🎵</button>
+
+<div id="env">
+  <img src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/6.jpg" alt="Envelope" onclick="abrirConvite()">
+  <p class="hint">Clique para abrir</p>
+</div>
+
+<div id="main">
+
+  <div class="pg vp">
+    <video id="v1" playsinline muted>
+      <source src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/copy_ADCE0166-C104-4389-A029-E620C85F9939.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="pg">
+    <img src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/1.jpg" alt="Aquarela">
+  </div>
+
+  <div class="pg">
+    <img src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/2.jpg" alt="Convidamos">
+  </div>
+
+  <div class="pg">
+    <img src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/3.jpg" alt="Data">
+  </div>
+
+  <div class="pg" style="position:relative;">
+    <img src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/4.jpg" alt="Links" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div style="height:15%;"></div>
+      <a href="https://site.lejour.com.br/raphael-e-victor" target="_blank" style="display:block;width:70%;height:48px;margin-bottom:6px;"></a>
+      <a href="https://site.lejour.com.br/raphael-e-victor" target="_blank" style="display:block;width:70%;height:48px;margin-bottom:6px;"></a>
+      <a href="https://site.lejour.com.br/lista-de-presentes/raphael-e-victor?targetLanguage=PT" target="_blank" style="display:block;width:70%;height:48px;margin-bottom:6px;"></a>
+      <a href="https://maps.app.goo.gl/pFn9MwSLddSxNHZu9" target="_blank" style="display:block;width:70%;height:48px;margin-bottom:6px;"></a>
+      <a href="https://maps.app.goo.gl/eeANbvgbrjdxzrJn9" target="_blank" style="display:block;width:70%;height:48px;"></a>
+    </div>
+  </div>
+
+  <div class="pg vp">
+    <video id="v2" playsinline muted>
+      <source src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/Raphael%20e%20Victor.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="pg">
+    <img src="https://raw.githubusercontent.com/convitedigitaldeluxo-byte/raphaelevictor/main/5.jpg" alt="Agradecimento">
+  </div>
+
+</div>
+
+<div id="sh">
+  <svg viewBox="0 0 24 24"><path d="M12 16l-6-6h12z"/></svg>
+</div>
+
+<script>
+var audio = document.getElementById('audio');
+var mb = document.getElementById('mb');
+var playing = false;
+
+function abrirConvite() {
+  var env = document.getElementById('env');
+  var main = document.getElementById('main');
+  env.classList.add('hide');
+  setTimeout(function() {
+    env.style.display = 'none';
+    main.classList.add('show');
+    document.getElementById('sh').style.display = 'flex';
+    mb.classList.add('show');
+    audio.volume = 0.6;
+    audio.play().then(function(){ playing = true; mb.textContent = '🎵'; }).catch(function(){});
+    document.getElementById('v1').play().catch(function(){});
+    var v2 = document.getElementById('v2');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { v2.currentTime = 0; v2.play().catch(function(){}); obs.disconnect(); }
+      });
+    }, { threshold: 0.5 });
+    obs.observe(v2);
+  }, 800);
+}
+
+mb.addEventListener('click', function() {
+  if (playing) { audio.pause(); playing = false; mb.textContent = '🔇'; }
+  else { audio.play(); playing = true; mb.textContent = '🎵'; }
+});
+
+document.getElementById('main').addEventListener('scroll', function() {
+  document.getElementById('sh').style.display = 'none';
+}, { once: true });
+</script>
+</body>
+</html>
